@@ -1,0 +1,31 @@
+{
+    "id": "114295910730351226485",
+    "displayName": "Dinesh Ghantasala",
+    "name": {
+        "familyName": "Ghantasala",
+        "givenName": "Dinesh"
+    },
+    "emails": [
+        {
+            "value": "ghantasaladinesh@gmail.com",
+            "verified": true
+        }
+    ],
+    "photos": [
+        {
+            "value": "https://lh3.googleusercontent.com/a/AATXAJxSrSgPyiTS9GAp-awLk9xWjw1x8l5VmvmMAXV4=s96-c"
+        }
+    ],
+    "provider": "google",
+    "_raw": "{\n  \"sub\": \"114295910730351226485\",\n  \"name\": \"Dinesh Ghantasala\",\n  \"given_name\": \"Dinesh\",\n  \"family_name\": \"Ghantasala\",\n  \"picture\": \"https://lh3.googleusercontent.com/a/AATXAJxSrSgPyiTS9GAp-awLk9xWjw1x8l5VmvmMAXV4\\u003ds96-c\",\n  \"email\": \"ghantasaladinesh@gmail.com\",\n  \"email_verified\": true,\n  \"locale\": \"en-GB\"\n}",
+    "_json": {
+        "sub": "114295910730351226485",
+        "name": "Dinesh Ghantasala",
+        "given_name": "Dinesh",
+        "family_name": "Ghantasala",
+        "picture": "https://lh3.googleusercontent.com/a/AATXAJxSrSgPyiTS9GAp-awLk9xWjw1x8l5VmvmMAXV4=s96-c",
+        "email": "ghantasaladinesh@gmail.com",
+        "email_verified": true,
+        "locale": "en-GB"
+    }
+}
