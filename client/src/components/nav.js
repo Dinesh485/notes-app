@@ -1,4 +1,4 @@
-import { Wrapper } from "../lib/ui/styled-components";
+
 import Logo from '../lib/images/logo.svg'
 
 import ModeToggleBtn from "./modeToggle";
@@ -12,7 +12,7 @@ const Nav = () => {
 
     return (
         <nav className='py-4'>
-            <Wrapper className='flex justify-between items-center'>
+            <div className='flex justify-between items-center w-11/12 max-w-[1300] mx-auto'>
                 <div>
                     <img className='w-[60px]' src={Logo} alt="" />
                 </div>
@@ -21,7 +21,7 @@ const Nav = () => {
                     <ModeToggleBtn />
                     <DropMenu />
                 </div>
-            </Wrapper>
+            </div>
         </nav>
     );
 }
