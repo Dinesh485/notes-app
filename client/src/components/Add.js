@@ -1,14 +1,34 @@
-import { BigInput, Input, RoundedDiv } from "../lib/ui/styled-components";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { close } from "../store/addSlice";
 
 const Add = () => {
-    return ( 
-        <div className='bg-[rgba(202, 204, 204, 0.42] absolute w-screen py-4 px-4 h-screen left-0 top-0 backdrop-filter backdrop-blur-[30px] flex justify-center items-center '>
-             <div className  = 'bg-black text-white rounded-2xl p-4   h-[75%]  overflow-hidden w-[90%]  flex flex-col'>
-                 <BigInput type="text" className = 'bg-[#363636] text-white w-full block m-0 h-[40px] mb-5' placeholder = 'Title'/>
-                 <textarea className = 'bg-[#363636] text-white w-full block rounded-xl flex-grow outline-none border-2 border-transparent border-solid focus:border-white resize-none p-2 px-3' placeholder = 'Content'></textarea>
-             </div>
-        </div>
-     );
+    const darkMode = useSelector(state => state.darkMode)
+    const GridView = useSelector(state => state.gridView)
+  const dispatch = useDispatch()
+
+  const handleOverleyClick = (e) =>{
+       e.stopPropagation()
+        dispatch(close())
+  }
+
+    return (
+        <motion.div  animate  = {{backdropFilter: `blur(30px)`}} exit = {{backdropFilter: 'blur(0px)', opacity: 0}} onClick = {handleOverleyClick} className='absolute top-0 left-0 w-full h-full bg-[#77777778] bg-opacity-50 dark:bg-[#CACCCC6B] '>
+           
+            <div  className ='relative w-11/12 max-w-[1300px] h-full mx-auto'>
+            <div className={`absolute w-full  h-[450px] max-w-[600px]   lg:max-w-[700px] lg:h-[500px] bottom-[80px] mx-auto right-1/2 translate-x-1/2 lg:bottom-0 ${GridView ? ' lg:right-[80px] xl:right-[100px]': 'lg:right-[200px] xl:right-[350px]'}   xl:h-[600px] xl:max-w-[800px] 2xl:h-[800px] 2xl:max-w-[1000px] xl:text-lg 2xl:text-xl lg:translate-x-0  md:pb-4 lg:pb-6 xl:pb-16  2xl:pb-24`}>
+                
+                <motion.div onClick = {(e) => e.stopPropagation()}  initial = {{scale: 0 , originX: 1 , originY: 1}} animate = {{scale: 1, transition : {type: 'spring', stiffness : 500, damping: 30} }} exit ={{scale: 0}} className='dark:bg-black bg-[#E8E8E8] text-white rounded-2xl p-4 py-7 h-full    w-full flex flex-col  md:rounded-3xl lg:p-6 lg:py-8 xl:p-8 2xl:p-10'>
+                    <input type="text" className='dark:bg-[#3F3F3FA3] bg-white dark:placeholder-[#DDDDDD] dark:text-white text-black placeholder-black  w-full block m-0 h-[45px] mb-5 lg:mb-8 rounded-xl p-2 px-3 outline-none border-2 border-solid border-transparent focus:border-[#DDDDDD] lg:h-[50px] 2xl:h-[60px] font-bold xl:rounded-2xl xl:px-4 xl:p-3' placeholder='Title' />
+                    <textarea className='dark:bg-[#3F3F3FA3] bg-white dark:placeholder-[#DDDDDD] dark:text-white text-black placeholder-black  w-full block rounded-xl flex-grow outline-none border-2 border-transparent border-solid focus:border-[#DDDDDD] resize-none p-2 px-3 xl:rounded-2xl xl:px-4 xl:p-3' placeholder='Content'></textarea>
+                </motion.div>
+               
+            </div>
+            </div>
+           
+        </motion.div>
+    );
 }
- 
+
 export default Add;
