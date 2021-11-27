@@ -27,9 +27,9 @@ const JwtStrat = new JwtStrategy(Jwtoptions, (payload, done) =>{
 })
 
 const googleOptions ={
-    clientID:'145970345955-0ov8uannsc629aig7mga0m8ekrk126lc.apps.googleusercontent.com',
-    clientSecret: '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',
-    callbackURL: "http://localhost:3000/google/redirect"
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: "http://localhost:5000/google/redirect"
 }
 
 const GoogleStrat = new GoogleStrategy(googleOptions, (refreshToken, accessToken , profile, done) =>{

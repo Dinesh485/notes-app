@@ -3,7 +3,7 @@ import Logo from '../lib/images/logo.svg'
 
 import ThemeToggleBtn from "./ThemeToggle";
 
-import { useState } from "react";
+
 import DropMenu from "./dropMenu";
 import { Link } from 'react-router-dom';
 const Nav = () => {

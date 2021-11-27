@@ -2,19 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const addSlicer = createSlice({
-    initialState: {isOpen : false},
+    initialState: {isOpen : false, item : ''},
     name: 'add',
     reducers:{
         openEmpty: (state) =>{
-           state.isOpen = true
+           return {isOpen: true, item: ''}
         },
         close: (state) =>{
-            state.isOpen = false
+            return {isOpen: false, item: ''}
+        },
+        openItem: (state,{ payload})  =>{
+            
+            return {isOpen: true, item : payload}
         }
        
     }
 })
 
-export const {openEmpty, close } = addSlicer.actions;
+export const {openEmpty, close, openItem } = addSlicer.actions;
 
 export default addSlicer.reducer

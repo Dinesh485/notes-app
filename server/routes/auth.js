@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {body , validationResult} = require('express-validator')
 const User = require('../models/user')
+const List = require('../models/list')
 const utils = require('../lib/utils')
 const passport = require('passport')
 
@@ -36,21 +37,30 @@ router.post('/register',registerValidators, async (req,res) =>{
     }
    
    const hashPass = await  utils.hashPassword(password, 10)
+   
+   const newList = new List({
+       items : []
+   })
+    
+   newList.save().then(list =>{
 
     const newUser = new User({
         email: email,
-        password: hashPass
+        password: hashPass,
+        list: list._id
     })
 
+    newUser.save().then(async user =>{
 
-   newUser.save().then(async user =>{
+        const token = await  utils.signJWT( user._id)
+ 
+        return res.send({success: true, token: token})
+    }).catch(err =>{
+        return res.send({success: false, message: 'there is a problem saving user'})
+    })
 
-       const token = await  utils.signJWT( user._id)
-
-       return res.send({success: true, token: token})
-   }).catch(err =>{
-       return res.send({success: false, message: 'there is a problem saving user'})
    })
+
 
 
 })

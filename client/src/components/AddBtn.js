@@ -1,17 +1,78 @@
+import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { openEmpty, close } from "../store/addSlice";
+import { updateList } from "../store/listSlicer";
+import { loading, notLoading } from "../store/loadingSlice";
 
 
 
 
 const AddBtn = () => {
-     const { isOpen } = useSelector((state) => state.add)
+     const { isOpen, item } = useSelector((state) => state.add)
+     const addItem = useSelector(state => state.addItem)
      const dispatch = useDispatch()
-     const [viewport, setViewPort] = useState(window.innerWidth)
+     const [viewport,] = useState(window.innerWidth)
+     const newitem = useSelector(state => state.addItem)
+     const history = useHistory()
    
+     
+     const hanldeClick =() =>{
+          dispatch(loading())
+
+          if(item) {
+               const updateItem = {
+                    id: item,
+                    title: addItem.title,
+                    content: addItem.content
+               }
+              
+               // route to update existing  item
+             return  axios.post('http://localhost:5000/list/update', updateItem, {
+                    headers:{
+                         Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+               }).then((res) =>{
+                    if(res.data.success){
+                         dispatch(updateList(res.data.items))
+                              dispatch(close())
+                              dispatch(notLoading())
+                           
+                       }
+               })
+               
+          }else{
+
+               // route for adding a new item
+               axios.post('http://localhost:5000/list/add' , newitem, { 
+              headers: {
+                   'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+         }).then((res) =>{
+             
+             if(res.data.success){
+               dispatch(updateList(res.data.items))
+               dispatch(close())
+          
+                dispatch(notLoading())
+             }
+
+         }).catch((err) =>{
+              if(err){
+               history.push('/login')
+              }
+         })
+          }
+
+
+
+
+
+       
+     }
 
      const handleDispatch = () =>{
           if(isOpen){
@@ -23,7 +84,7 @@ const AddBtn = () => {
 
      const btnVariation = {
           open: viewport >= 1024 ? { y: '-140% ' ,fill: '#cc2a1f' } : { x: -50 , fill: '#cc2a1f' },
-          close: viewport >= 1024 ? { y: 0, fill:'black' } : { x: 0, fill: 'black' }
+          close: viewport >= 1024 ? { y: 0, fill:'#0000' } : { x: 0, fill: '#0000' }
      }
      const btnVariation2 = {
           open: viewport >= 1024 ? { y: 0 } : { x: 50 },
@@ -47,13 +108,13 @@ const AddBtn = () => {
 
                <AnimatePresence>
 
-               {isOpen && <motion.svg variants={btnVariation2} initial={'close'} animate={isOpen ? 'open' : 'close'} exit = {'close'} className='block lg:ml-0  absolute h-full lg:w-full lg:h-auto' viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+               {isOpen && <motion.svg onClick= {hanldeClick} variants={btnVariation2} initial={'close'} animate={isOpen ? 'open' : 'close'} exit = {'close'} className='block lg:ml-0  absolute h-full lg:w-full lg:h-auto' viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50.0015" r="50" fill="url(#paint0_linear_21:478)" />
                     <path d="M68.5628 37.1291C67.381 35.9473 65.4613 35.9591 64.2942 37.1554L45.4401 56.4807C44.2948 57.6546 42.419 57.6912 41.2288 56.5629L34.6958 50.3698C33.5187 49.2539 31.6678 49.2757 30.5173 50.419L29.2119 51.7162C28.0202 52.9004 28.0332 54.8323 29.2407 56.0004L41.9145 68.2605C43.0993 69.4067 44.9869 69.3821 46.1415 68.2056L70.5571 43.3262C71.7099 42.1515 71.7011 40.2674 70.5373 39.1036L68.5628 37.1291Z" fill="white" />
                     <defs>
                          <linearGradient id="paint0_linear_21:478" x1="50" y1="0.00146484" x2="50" y2="100.001" gradientUnits="userSpaceOnUse">
-                              <stop stop-color="#0196FA" />
-                              <stop offset="1" stop-color="#E03659" />
+                              <stop stopColor="#0196FA" />
+                              <stop offset="1" stopColor="#E03659" />
                          </linearGradient>
                     </defs>
                </motion.svg>} 

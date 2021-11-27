@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import { useState } from "react";
 
 const MenuFunc = ({btn, drop}) => {
@@ -33,7 +33,7 @@ const MenuFunc = ({btn, drop}) => {
                  {btn}
                </button>
              
-                 <motion.div onClick = {(e) => {}}  variants = {isOpenVarient} initial = {'close'} animate = {isOpen ? 'open' : 'close'} exit = {{scale: 0}} className = 'z-20 bg-white  shadow-lg dark:shadow-none rounded-xl p-3 px-5 absolute mt-4'>
+                 <motion.div onClick = {(e) => {}}  variants = {isOpenVarient} initial = {'close'} animate = {isOpen ? 'open' : 'close'} exit = {{scale: 0}} className = 'z-20 bg-white  shadow-lg dark:shadow-none rounded-xl p-3  absolute mt-4'>
                         {drop}
                      </motion.div>
            

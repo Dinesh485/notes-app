@@ -6,6 +6,9 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type : String
+    },
+    list:{
+        type: String
     }
 })
 
