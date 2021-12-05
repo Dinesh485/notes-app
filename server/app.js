@@ -5,6 +5,7 @@ if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
 }
 const cors = require('cors')
+require('./lib/genKeys')
 
 // middlewares
 app.use(express.json())
