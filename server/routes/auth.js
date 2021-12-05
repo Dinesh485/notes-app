@@ -74,9 +74,12 @@ const loginValidators = [
             }
         })
     }),
-    body('password').custom((pass , {req}) =>{
+    body('password').custom(async (pass , {req}) =>{
          
          return  User.findOne({email: req.body.email}).then(async user =>{
+             if(!user){
+                 return Promise.reject(' ')
+             }
                if(!await utils.verifyPassword(pass, user.password )){
                    return Promise.reject('incorrect password')
                }
@@ -105,13 +108,5 @@ router.post('/login',loginValidators, async(req,res) =>{
 })
 
 
-router.get('/google',passport.authenticate('google', {session: false, scope : ['email']}))
-
-router.get('/google/redirect',passport.authenticate('google', {session: false, failureRedirect : '/register'}), async(req,res) =>{
-        const token = await utils.signJWT(req.user._id)
-
-        return res.send({success: true, token: token})
-        
-})
 
 module.exports = router

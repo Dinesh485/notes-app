@@ -1,7 +1,7 @@
 import Nav from "./components/nav";
 import darkBg from './lib/images/aura-gradient.png'
 import lightBg from './lib/images/aura-gradient-light.png'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Home from "./pages/home";
 import Login from "./pages/Login";
 import SignUp from "./pages/register";
@@ -11,12 +11,18 @@ import { useEffect } from "react";
 
 
 import Loading from "./components/loading";
+import PopUp from "./components/popup";
+import { AnimatePresence } from "framer-motion";
+import PageNotFound from "./pages/notFound";
+import Profile from "./pages/profile";
 
 
 function App() {
 
   const darkMode = useSelector(state => state.darkMode)
   const loading = useSelector(state => state.loading)
+  const popup = useSelector(state => state.popup)
+  const auth = useSelector (state => state.isAuth)
 
   useEffect(() => {
 
@@ -42,17 +48,25 @@ function App() {
 
         <Switch>
           <Route exact path='/'>
-            <Home />
+             {auth ? <Home /> : <Redirect to= '/login' />}
           </Route>
           <Route path='/login'>
-            <Login />
+             {auth ? <Redirect to ='/' /> : <Login />}
           </Route>
-          <Route path='/signup'>
-            <SignUp />
+          <Route path='/register'>
+          {auth ? <Redirect to ='/' /> : <SignUp />}
           </Route>
-
+          <Route path='/profile'>
+          {auth ?   <Profile />: <Redirect to = '/login' />}
+          </Route>
+          <Route path = "*" >
+             <PageNotFound />
+          </Route>
         </Switch>
         {loading && <Loading />}
+        <AnimatePresence> 
+        {popup.open && <PopUp msg = {popup.msg} />}
+        </AnimatePresence>
       </div>
     </Router>
   );

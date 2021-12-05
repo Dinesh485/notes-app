@@ -156,7 +156,7 @@ const List = () => {
           </AnimatePresence>
       </motion.ul>
       {list.length === 0 && <div className=' text-gray-500/50 dark:text-white/50 text-2xl font-bold  mx-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center xl:text-4xl'>Nothing to show</div>}
-      {(searchResult.length <=0 && searchStr.length > 0) && <div className=' text-gray-500/50 dark:text-white/50 text-2xl font-bold  mx-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center xl:text-4xl'>No match</div>}
+      {(searchResult.length <=0 && searchStr.length > 0 && list.length > 0) && <div className=' text-gray-500/50 dark:text-white/50 text-2xl font-bold  mx-auto  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center xl:text-4xl'>No match</div>}
     </div>
   );
 }

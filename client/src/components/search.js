@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { updateSearchStr } from "../store/searchSlice";
-import FilterMenu from "./filterMenu";
+
 
 const Search = () => {
     const searchStr = useSelector(state => state.searchString)

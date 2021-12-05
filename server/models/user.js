@@ -9,6 +9,9 @@ const userSchema = mongoose.Schema({
     },
     list:{
         type: String
+    },
+    profile_img: {
+        type: Object
     }
 })
 

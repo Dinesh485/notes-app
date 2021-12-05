@@ -1,8 +1,10 @@
 import {  motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 const MenuFunc = ({btn, drop}) => {
     const [isOpen, setIsOpen] = useState(false)
+    const history = useHistory()
     
     const isOpenVarient = {
         open: {scale: 1 , transition: {type: 'spring', stiffness : 600, damping: 25}},
@@ -26,6 +28,12 @@ const MenuFunc = ({btn, drop}) => {
            setIsOpen(false)
         }
       }
+
+      useEffect(() =>{
+           return history.listen(() =>{
+             setIsOpen(false)
+           })
+      },[history])
  
     return ( 
          <div  onBlur  = {onBlur}>

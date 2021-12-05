@@ -61,7 +61,7 @@ const SignUp = () => {
             </div>
             <div className = 'text-white mt-2 xl:text-lg  2xl:text-xl 2xl:mt-4'>
                <p>
-                   Already a user? <Link  to = '/register' className = 'underline' >Login here </Link>
+                   Already a user? <Link  to = '/login' className = 'underline' >Login here </Link>
                </p>
             </div>
         </motion.div>

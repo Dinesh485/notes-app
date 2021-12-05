@@ -12,14 +12,15 @@ app.use(express.urlencoded({extended: true}))
 require('./config/passport')
 app.use(passport.initialize())
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.CLIENT_ADDRESS,
 }))
 // routes
 const authRoutes = require('./routes/auth')
 const listRoutes = require('./routes/list')
+const profileRoutes= require('./routes/profile')
 app.use(authRoutes)
 app.use(listRoutes)
-
+app.use(profileRoutes)
 
 // db connections
 require('./config/db')

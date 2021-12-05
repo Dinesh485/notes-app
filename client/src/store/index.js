@@ -7,6 +7,7 @@ import isAuthReducer from './authSlice'
 import addItemReducer from "./addItemSlicer";
 import listReducer from "./listSlicer";
 import searchReducer from "./searchSlice";
+import popupReducer from "./popupSlice";
 
 
 export default  configureStore({
@@ -18,6 +19,7 @@ export default  configureStore({
         isAuth: isAuthReducer,
         addItem: addItemReducer,
         list: listReducer,
-        searchString: searchReducer
+        searchString: searchReducer,
+        popup: popupReducer
     }
 })

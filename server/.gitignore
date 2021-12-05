@@ -1,3 +1,4 @@
 /node_modules
 .env
 /lib/id_rsa_priv.pem
+/lib/id_rsa_pub.pem

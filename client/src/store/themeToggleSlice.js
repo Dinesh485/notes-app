@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const toBoolean = (x) =>{
+     if(x ==='true'){
+         return true
+     }
+     if(x ==='false'){
+         return false
+     }
+}
 
 const themeToggleSlicer = createSlice({
     name: 'darkMode',
-    initialState: window.matchMedia('(prefers-color-scheme : dark)').matches,
+    initialState:toBoolean(localStorage.getItem('darkMode')),
     reducers: {
         light: (state) =>{
           return false

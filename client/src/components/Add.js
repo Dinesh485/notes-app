@@ -1,7 +1,6 @@
 import {  motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { close } from "../store/addSlice";
 import {useEffect, useState} from 'react'
 import { updateItem } from "../store/addItemSlicer";
 
@@ -33,13 +32,10 @@ const Add = () => {
        }
     },[add,list])
 
-  const handleOverleyClick = (e) =>{
-       e.stopPropagation()
-        dispatch(close())
-  }
+ 
 
     return (
-        <motion.div transition = {{type: 'tween', duration: 0.2}} animate  = {{backdropFilter: `blur(30px)`}} exit = {{backdropFilter: 'blur(0px)', opacity: 0}} onClick = {handleOverleyClick} className='absolute top-0 left-0 w-full h-full bg-[#77777778] bg-opacity-50 dark:bg-[#CACCCC6B] '>
+        <motion.div transition = {{type: 'tween', duration: 0.2}} animate  = {{backdropFilter: `blur(30px)`}} exit = {{backdropFilter: 'blur(0px)', opacity: 0}}  className='absolute top-0 left-0 w-full h-full bg-[#77777778] bg-opacity-50 dark:bg-[#CACCCC6B] '>
            
             <div  className ='relative w-11/12 max-w-[1300px] h-full mx-auto'>
             <div className={`absolute w-full  h-[450px] max-w-[600px]   lg:max-w-[700px] lg:h-[500px] bottom-[80px] mx-auto right-1/2 translate-x-1/2 lg:bottom-0 ${GridView ? ' lg:right-[80px] xl:right-[100px]': 'lg:right-[200px] xl:right-[350px]'}   xl:h-[600px] xl:max-w-[800px] 2xl:h-[800px] 2xl:max-w-[1000px] xl:text-lg 2xl:text-xl lg:translate-x-0  md:pb-4 lg:pb-6 xl:pb-16  2xl:pb-24`}>
