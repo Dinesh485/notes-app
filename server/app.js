@@ -11,9 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 require('./config/passport')
 app.use(passport.initialize())
-app.use(cors({
-    origin: process.env.CLIENT_ADDRESS,
-}))
+app.use(cors())
 // routes
 const authRoutes = require('./routes/auth')
 const listRoutes = require('./routes/list')
