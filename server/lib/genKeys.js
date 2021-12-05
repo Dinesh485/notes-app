@@ -31,3 +31,4 @@
  
  // Generate the keypair
  genKeyPair();
+ console.log('keys generated')
