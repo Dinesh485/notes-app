@@ -23,7 +23,7 @@ const List = () => {
 
   useEffect(() => {
     dispatch(loading())
-    axios.get('http://localhost:5000/list', {
+    axios.get('https://notes-app-portfolio-project.herokuapp.com/list', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -75,7 +75,7 @@ const List = () => {
  const handleDelete = (id) =>{
      
        
-     axios.post('http://localhost:5000/list/delete', {id}, {
+     axios.post('https://notes-app-portfolio-project.herokuapp.com/list/delete', {id}, {
        headers: {
          Authorization: `Bearer ${localStorage.getItem('token')}`
        }

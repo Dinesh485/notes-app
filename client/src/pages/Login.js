@@ -19,7 +19,7 @@ const Login = () => {
      
     const handleSubmit = () =>{
         dispatch(loading())
-        axios.post('http://localhost:5000/login',{
+        axios.post('https://notes-app-portfolio-project.herokuapp.com/login',{
              email,
              password
         }).then((res) =>{

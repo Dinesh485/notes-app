@@ -25,7 +25,7 @@ const Profile = () => {
     const handleChangePassword = () => {
         if (oldPassword && newPassword) {
             dispatch(loading())
-            axios.post('http://localhost:5000/changePassword', {
+            axios.post('https://notes-app-portfolio-project.herokuapp.com/changePassword', {
                 newPassword: newPassword,
                 oldPassword: oldPassword
             }, {
@@ -63,7 +63,7 @@ const Profile = () => {
     const handleDeleteAccount = () => {
         if (oldPassword) {
             dispatch(loading())
-            axios.post('http://localhost:5000/deleteAccount', {
+            axios.post('https://notes-app-portfolio-project.herokuapp.com/deleteAccount', {
 
                 password: oldPassword
             }, {
@@ -94,7 +94,7 @@ const Profile = () => {
         reader.readAsDataURL(file)
         reader.onloadend = () => {
 
-            axios.post('http://localhost:5000/profileImage', { file: reader.result }, {
+            axios.post('https://notes-app-portfolio-project.herokuapp.com/profileImage', { file: reader.result }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -131,7 +131,7 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(loading())
-        axios.get('http://localhost:5000/profile', {
+        axios.get('https://notes-app-portfolio-project.herokuapp.com/profile', {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

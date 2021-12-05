@@ -16,7 +16,7 @@ const SignUp = () => {
    
     const handleSubmit = () =>{
        dispatch(loading())
-       axios.post('http://localhost:5000/register',{
+       axios.post('https://notes-app-portfolio-project.herokuapp.com/register',{
             email,
             password
        }).then((res) =>{

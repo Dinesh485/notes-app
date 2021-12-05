@@ -40,7 +40,7 @@ const AddBtn = () => {
                }
 
                // route to update existing  item
-               return axios.post('http://localhost:5000/list/update', updateItem, {
+               return axios.post('https://notes-app-portfolio-project.herokuapp.com/list/update', updateItem, {
                     headers: {
                          Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
@@ -58,7 +58,7 @@ const AddBtn = () => {
                if (addItem.title) {
                     dispatch(loading())
                     // route for adding a new item
-                    axios.post('http://localhost:5000/list/add', newitem, {
+                    axios.post('https://notes-app-portfolio-project.herokuapp.com/list/add', newitem, {
                          headers: {
                               'Authorization': `Bearer ${localStorage.getItem('token')}`
                          }
