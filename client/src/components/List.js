@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { openItem } from "../store/addSlice";
+import { logout } from "../store/authSlice";
 import { updateList } from "../store/listSlicer";
 import { loading, notLoading } from "../store/loadingSlice";
 
@@ -30,6 +31,9 @@ const List = () => {
     }).then((listRes) => {
       dispatch(updateList(listRes.data))
       dispatch(notLoading())
+    }).catch(() =>{
+        dispatch(notLoading())
+        dispatch(logout())
     })
   }, [dispatch])
 

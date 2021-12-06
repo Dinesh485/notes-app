@@ -6,12 +6,6 @@ import store from './store'
 import { Provider } from 'react-redux';
 
 
-store.subscribe(() =>{
-    const {darkMode}= store.getState()
-
-    localStorage.setItem('darkMode', darkMode)
-   
-})
 
 ReactDOM.render(
   <React.StrictMode>

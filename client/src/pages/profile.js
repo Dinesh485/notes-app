@@ -157,11 +157,11 @@ const Profile = () => {
                 <form ref={imgForm} className='relative text-black transition-colors duration-300 dark:text-white mb-5 box-content px-2 cursor-pointer'>
                     <input onInput={(e) => handleImageInput(e.target.files[0])} accept="image/png, image/jpeg" type="file" className='hidden' id='uploadImg' />
 
-                    {!profileImg && <label for='uploadImg' type='file' className={`cursor-pointer w-10 block border-4 border-solid border-black  dark:border-white  p-5 box-content rounded-full md:w-20 md:p-8 `}>
+                    {!profileImg && <label htmlFor='uploadImg' type='file' className={`cursor-pointer w-10 block border-4 border-solid border-black  dark:border-white  p-5 box-content rounded-full md:w-20 md:p-8 `}>
                         <svg className='w-full fill-current' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" /></svg>
                         
                     </label>}
-                    {profileImg && <label for='uploadImg' type='file' className={`cursor-pointer w-24 block ring-4 dark:ring-white ring-black  rounded-full md:w-32 xl:w-44 overflow-hidden transition-colors duration-300 `}>
+                    {profileImg && <label htmlFor='uploadImg' type='file' className={`cursor-pointer w-24 block ring-4 dark:ring-white ring-black  rounded-full md:w-32 xl:w-44 overflow-hidden transition-colors duration-300 `}>
                         <img className='w-full rounded-full' src={profileImg} alt='profile'  />
                     </label>}
                     <svg className='w-4 absolute bottom-0 right-0 fill-current xl:w-6' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z" /></svg>

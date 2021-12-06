@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/register";
 
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 import Loading from "./components/loading";
@@ -23,6 +23,7 @@ function App() {
   const loading = useSelector(state => state.loading)
   const popup = useSelector(state => state.popup)
   const auth = useSelector (state => state.isAuth)
+  const [screen, setScreen] = useState(undefined)
 
   useEffect(() => {
 
@@ -38,11 +39,21 @@ function App() {
 
   }, [darkMode])
 
+ useEffect(() =>{
+     const imageList = [darkBg, lightBg]
+     imageList.forEach((img) =>{
+        new Image().src = img
+     })
 
+ },[])
+ useEffect(() =>{
+      const  h = window.innerHeight
+      setScreen(h)
+ },[])
 
   return (
-    <Router >
-      <div className='App w-screen h-screen  bg-cover bg-center bg-no-repeat overflow-hidden  flex flex-col font-Roboto transition-all duration-300' style={{ backgroundImage: darkMode ? `url(${darkBg})` : `url(${lightBg})`, }} >
+    <Router  >
+      <div className={`App w-screen   bg-cover bg-center bg-no-repeat overflow-hidden  flex flex-col font-Roboto transition-all duration-300`} style={{ backgroundImage: darkMode ? `url(${darkBg})` : `url(${lightBg})`,height :  '100vh' }} >
 
         <Nav />
 
@@ -57,7 +68,7 @@ function App() {
           {auth ? <Redirect to ='/' /> : <SignUp />}
           </Route>
           <Route path='/profile'>
-          {auth ?   <Profile />: <Redirect to = '/login' />}
+          {auth ?   <Profile /> : <Redirect to = '/login' />}
           </Route>
           <Route path = "*" >
              <PageNotFound />
