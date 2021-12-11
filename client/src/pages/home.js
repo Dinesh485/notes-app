@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
   
-        <motion.div initial = {{x: -100, opacity: 0}} animate = {{x: 0 , opacity : 1}} exit = {{x: 100 ,opacity :0}} className=' pt-5 pb-2 flex-grow overflow-hidden mx-auto w-11/12 max-w-[1300px] md:flex md:pb-4 lg:pb-6 xl:pb-16 xl:py-10 2xl:py-16 2xl:pb-24'>
+        <motion.div initial = {{x: -100, opacity: 0}} animate = {{x: 0 , opacity : 1}} exit = {{x: 100 ,opacity :0}} className=' pt-5 pb-2  flex-grow overflow-hidden mx-auto w-11/12 max-w-[1300px] md:flex md:pb-4 lg:pb-6 xl:pb-16 xl:py-10 2xl:py-16 2xl:pb-24'>
               
 
               <motion.div transition = {{type: "tween", duration: 0.4}} animate = {!gridView ? {width: 800} : {width: '100%'}} className ={`  max-w-full h-full flex flex-col lg:flex-row transition-colors duration-300 mx-auto `}>

@@ -53,7 +53,7 @@ function App() {
 
   return (
     <Router  >
-      <div className={`App w-screen   bg-cover bg-center bg-no-repeat overflow-hidden  flex flex-col font-Roboto transition-all duration-300`} style={{ backgroundImage: darkMode ? `url(${darkBg})` : `url(${lightBg})`,height :  '100vh' }} >
+      <div className={`App w-screen h-full  bg-cover bg-center bg-no-repeat overflow-hidden  flex flex-col font-Roboto transition-all duration-300`} style={{ backgroundImage: darkMode ? `url(${darkBg})` : `url(${lightBg})`}} >
 
         <Nav />
 

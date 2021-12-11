@@ -49,7 +49,7 @@ const SignUp = () => {
                          <p className = 'text-red-500 text-xs ml-2 md:text-xs xl:text-base'>{err.msg}</p>
                      
                  )}
-                <input onChange = {(e) =>{ setPassword(e.target.value)}} value = {password} type="text" placeholder='Password' className='bg-white dark:text-white text-black dark:bg-[#3F3F3FA3] placeholder-black dark:placeholder-[#DDDDDD] box-border px-4  mt-5 rounded-2xl w-full  h-[45px] outline-none border-2 border-solid border-transparent focus:border-[#DDDDDD] max-w-[500px] mx-auto block xl:h-[50px] 2xl:h-[60px] 2xl:rounded-3xl 2xl:text-xl  transition-colors duration-300' />
+                <input onChange = {(e) =>{ setPassword(e.target.value)}} value = {password} type="password" placeholder='Password' className='bg-white dark:text-white text-black dark:bg-[#3F3F3FA3] placeholder-black dark:placeholder-[#DDDDDD] box-border px-4  mt-5 rounded-2xl w-full  h-[45px] outline-none border-2 border-solid border-transparent focus:border-[#DDDDDD] max-w-[500px] mx-auto block xl:h-[50px] 2xl:h-[60px] 2xl:rounded-3xl 2xl:text-xl  transition-colors duration-300' />
                 {errors.length > 0 && errors.map(err =>
                      err.param === 'password' &&
                         <p className = 'text-red-500 text-xs ml-2 md:text-xs xl:text-base'>{err.msg}</p>

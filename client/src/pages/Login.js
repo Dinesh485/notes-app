@@ -20,7 +20,7 @@ const Login = () => {
     const handleSubmit = () =>{
         dispatch(loading())
         axios.post('https://notes-app-portfolio-project.herokuapp.com/login',{
-             email,
+             email: email.trim(),
              password
         }).then((res) =>{
  
@@ -53,7 +53,7 @@ const Login = () => {
                          <p className = 'text-red-500 text-xs ml-2 md:text-xs xl:text-base'>{err.msg}</p>
                      
                  )}
-                <input onChange = {(e) => setPassword(e.target.value) } type="text" placeholder='Password' className='bg-white dark:text-white text-black placeholder-black dark:bg-[#3F3F3FA3] dark:placeholder-[#DDDDDD] box-border px-4  rounded-2xl w-full mt-5 h-[45px] outline-none border-2 border-solid border-transparent focus:border-[#DDDDDD] max-w-[500px] mx-auto block xl:h-[50px] 2xl:h-[60px] 2xl:rounded-3xl 2xl:text-xl  transition-colors duration-300' />
+                <input onChange = {(e) => setPassword(e.target.value) } type="password" placeholder='Password' className='bg-white dark:text-white text-black placeholder-black dark:bg-[#3F3F3FA3] dark:placeholder-[#DDDDDD] box-border px-4  rounded-2xl w-full mt-5 h-[45px] outline-none border-2 border-solid border-transparent focus:border-[#DDDDDD] max-w-[500px] mx-auto block xl:h-[50px] 2xl:h-[60px] 2xl:rounded-3xl 2xl:text-xl  transition-colors duration-300' />
                 {errors.length > 0 && errors.map(err =>
                      err.param === 'password' &&
                          <p className = 'text-red-500 text-xs ml-2 md:text-xs xl:text-base'>{err.msg}</p>

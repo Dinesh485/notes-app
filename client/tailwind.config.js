@@ -6,7 +6,10 @@ module.exports = {
     extend: {
       fontFamily: {
         'Roboto': ['Roboto', 'sans-serif']
-       }
+       },
+       screens:{
+         'xs': '375px',
+       },
     },
   },
   variants: {
