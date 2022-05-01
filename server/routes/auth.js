@@ -67,8 +67,8 @@ router.post('/register',registerValidators, async (req,res) =>{
 
 const loginValidators = [
     body('email').isEmail().withMessage('enter a valid email'),
-    body('email').custom((email) =>{
-      return User.findOne({email: email}).then(user =>{
+    body('email').custom(async (email) =>{
+      return await User.findOne({email: email}).then(user =>{
             if(!user){
                 return Promise.reject('email not registered')
             }
@@ -76,7 +76,7 @@ const loginValidators = [
     }),
     body('password').custom(async (pass , {req}) =>{
          
-         return  User.findOne({email: req.body.email}).then(async user =>{
+         return await User.findOne({email: req.body.email}).then(async user =>{
              if(!user){
                  return Promise.reject(' ')
              }
