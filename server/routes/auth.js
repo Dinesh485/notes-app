@@ -7,8 +7,8 @@ const passport = require('passport')
 
 const registerValidators = [
     body('email').isEmail().withMessage('enter a valid email'),
-    body('email').custom((email) =>{
-      return User.findOne({email: email}).then(user =>{
+    body('email').custom(async (email) =>{
+      return await User.findOne({email: email}).then(user =>{
             if(user){
                 return Promise.reject('email already registered')
             }
